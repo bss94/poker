@@ -16,12 +16,12 @@ class CardDeck {
         }
     }
 
-    getCard():Card[] {
-        const cardNum:number = Math.floor(Math.random() * this.deck.length);
+    getCard(): Card[] {
+        const cardNum: number = Math.floor(Math.random() * this.deck.length);
         return this.deck.splice(cardNum, 1);
     }
 
-    getCards(howMany: number):Card[] {
+    getCards(howMany: number): Card[] {
         const arr: Card[] = [];
         for (let i = 0; i < howMany; i++) {
             arr.push(this.getCard()[0]);

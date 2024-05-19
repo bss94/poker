@@ -4,38 +4,37 @@ import CardDeck from './lib/CardDeck.ts';
 import {useState} from 'react';
 import card from './lib/Card.ts';
 import PokerHand from './lib/PokerHand.ts';
-import cardDeck from './lib/CardDeck.ts';
 
 
 function App() {
-    const [state, setState] = useState<card[]>([]);
+    const [hand, setHand] = useState<card[]>([]);
     const [deck, setDeck] = useState<CardDeck>();
 
     const start = () => {
-        const cards: cardDeck = new CardDeck();
-        setState(cards.getCards(5));
+        const cards: CardDeck = new CardDeck();
+        setHand(cards.getCards(5));
         setDeck(cards);
     };
     const step = () => {
         if (deck !== undefined) {
             if (deck.deck.length >= 5) {
-                setState(deck.getCards(5));
+                setHand(deck.getCards(5));
             } else {
-                setState(deck.getCards(deck.deck.length));
+                setHand(deck.getCards(deck.deck.length));
             }
         }
     };
     const reset = () => {
         setDeck(undefined);
-        setState([]);
+        setHand([]);
         //start();
     };
     const end = () => {
         setDeck(undefined);
-        setState([]);
+        setHand([]);
     };
     const poker = () => {
-        const poker = new PokerHand(state);
+        const poker = new PokerHand(hand);
         return poker.getOutcome();
     };
 
@@ -49,13 +48,13 @@ function App() {
                             <button onClick={end}>End</button>
                         </div> :
                         <button onClick={step}>Get cards</button>}
-                    <p> {poker()} </p>
-                    <div className="playingCards faceImages">
-                        {state.map((el) => {
-                            return <Card rank={el.rank} suit={el.suit} key={el.rank + el.suit}/>;
-                        })}
+                        <p> {poker()} </p>
+                        <div className="playingCards faceImages">
+                            {hand.map((el) => {
+                                return <Card rank={el.rank} suit={el.suit} key={el.rank + el.suit}/>;
+                            })}
 
-                    </div>
+                        </div>
                 </>
 
             }

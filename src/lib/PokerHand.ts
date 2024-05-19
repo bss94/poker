@@ -56,7 +56,7 @@ class PokerHand {
             this.result = 'Street';
         }
         if (this.result === '') {
-            const duplicates:string[] = handRanks.filter((number, index, numbers) => {
+            const duplicates: string[] = handRanks.filter((number, index, numbers) => {
                 return numbers.indexOf(number) !== index;
             });
             if (duplicates.length === 3 && duplicates[0] !== duplicates[duplicates.length - 1]) {
@@ -65,9 +65,9 @@ class PokerHand {
             } else if (duplicates.length === 3 && duplicates[0] === duplicates[duplicates.length - 1]) {
                 this.result = 'Square';
             } else if (duplicates.length > 0 && duplicates.length < 3) {
-                const result:number[] = duplicates.map((el:string) => {
-                    let count:number = 0;
-                    for (let i:number = 0; i < handRanks.length; i++) {
+                const result: number[] = duplicates.map((el: string) => {
+                    let count: number = 0;
+                    for (let i: number = 0; i < handRanks.length; i++) {
                         if (el === handRanks[i]) {
                             count++;
                         }
@@ -84,7 +84,7 @@ class PokerHand {
             }
         }
         if (this.result === '') {
-            let hightCard:string = '0';
+            let hightCard: string = '0';
             for (let i = 0; i < handRanks.length; i++) {
                 if (parseInt(handRanks[i]) > parseInt(hightCard)) {
                     hightCard = handRanks[i];
@@ -108,7 +108,7 @@ class PokerHand {
         }
     }
 
-    getOutcome():string {
+    getOutcome(): string {
         return this.result;
     }
 }
