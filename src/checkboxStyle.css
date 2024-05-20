@@ -1,0 +1,4 @@
+.checkbox:checked .check-lbl{
+    display: inline-block;
+    background-color: sandybrown;
+}

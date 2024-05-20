@@ -5,6 +5,7 @@ class PokerHand {
     private result: string;
 
     constructor(hand: card[]) {
+        this.result = '';
         const handSuits: string[] = hand.map((el: card) => {
             return el.suit;
         });
@@ -43,8 +44,6 @@ class PokerHand {
                 }
             }
         }
-
-        this.result = '';
         if (street && flash) {
             if (handRanks[handRanks.length - 1] === '14') {
                 this.result = 'Royal Flash';
@@ -61,7 +60,6 @@ class PokerHand {
             });
             if (duplicates.length === 3 && duplicates[0] !== duplicates[duplicates.length - 1]) {
                 this.result = 'Full House';
-
             } else if (duplicates.length === 3 && duplicates[0] === duplicates[duplicates.length - 1]) {
                 this.result = 'Square';
             } else if (duplicates.length > 0 && duplicates.length < 3) {
@@ -106,8 +104,10 @@ class PokerHand {
             }
             this.result = 'Bigger card : ' + hightCard.toUpperCase();
         }
+        if(handRanks.length<5){
+            this.result='You need more cards to combination, try new game'
+        }
     }
-
     getOutcome(): string {
         return this.result;
     }

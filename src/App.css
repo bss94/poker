@@ -1,6 +1,27 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+}
+
+/* for correct styles to my needs */
+.checkbox:checked + label .card {
+    box-shadow: .2em .2em .5em #ff0000;
+}
+
+.checkbox {
+    display: none;
+}
+
+.cards-check {
+    display: inline-block;
+}
+
+.message {
+    color: #e33d3d;
+}
+
+.message-first {
+    color: #535bf2;
 }
