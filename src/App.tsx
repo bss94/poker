@@ -50,8 +50,8 @@ function App() {
         setChecked(updatedCheckedState);
     };
     const getSkipAndDeal = () => {
-        const onHand: card[] = hand;
-        const toChange: boolean[] = checked;
+        const onHand: card[] =[...hand];
+        const toChange: boolean[] = [...checked];
         if (deck !== undefined) {
             const newHand: card[] = onHand.map((el, index): card => {
                 if (toChange[index]) {
@@ -70,7 +70,7 @@ function App() {
         <>
             {!deck ? <button onClick={start}>Start game</button> :
                 <>
-                    {deck ? <p>{deck.deck.length}</p> : <p>0</p>}
+                    {deck ? <p>Cards on deck: {deck.deck.length}</p> : <p>Deck empty</p>}
                     {deck.deck.length === 0 ? <div>
                             <button onClick={reset}>New game</button>
                             <button onClick={end}>End game</button>
